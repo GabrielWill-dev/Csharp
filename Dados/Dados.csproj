@@ -41,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compra.cs" />
+    <Compile Include="CompraRepository.cs" />
+    <Compile Include="ContaPagar.cs" />
+    <Compile Include="ContaPagarRepository.cs" />
+    <Compile Include="Fornecedor.cs" />
+    <Compile Include="FornecedorRepository.cs" />
+    <Compile Include="ItemCompra.cs" />
+    <Compile Include="ItemCompraRepository.cs" />
     <Compile Include="ItemVenda.cs" />
     <Compile Include="ItemVendaRepository.cs" />
     <Compile Include="VendaRepository.cs" />
