@@ -8,7 +8,6 @@ namespace Dados
 {
     public class Venda
     {
-        public Produto Produto { get; set; }
         public int Id { get; set; }
         public Cliente Cliente { get; set; }
         public DateTime Instante { get; set; }

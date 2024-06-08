@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dados;
+using MySql.Data.MySqlClient;
 
 namespace Negocio
 {
@@ -16,7 +19,7 @@ namespace Negocio
             _repository = new ClienteRepository();
         }
 
-        public void Insert(int id, TipoPessoa tipoPessoa, string nome, string email)
+        public string Update(int? id, TipoPessoa tipoPessoa, string nome, string email)
         {
             // Insira as validações e regras de negócio aqui
             // Por exemplo, verificar se o email já está cadastrado
@@ -29,35 +32,37 @@ namespace Negocio
                 Email = email
             };
 
-            _repository.Insert(cliente);
+            if (id == null)
+                return _repository.Insert(cliente);
+            else
+                return _repository.Update(cliente);
 
         }
 
-        public void Insert(Cliente cliente)
+        public string Insert(Cliente cliente)
         {
             // Insira as validações e regras de negócio aqui
             // Por exemplo, verificar se o email já está cadastrado
 
-            _repository.Insert(cliente);
+            return _repository.Insert(cliente);
+
+        }
+        public string Remove(int idCliente)
+        {
+            // Insira as validações e regras de negócio aqui
+            // Por exemplo, verificar se o email já está cadastrado
+
+            return _repository.Remove(idCliente);
 
         }
 
-        public Cliente FindById(int id)
+        public DataTable getAll()
         {
-            foreach(Cliente c in _repository.getAll())
-            {
-                if (c.Id == id) return c;
-            }
-            return null;
+            return _repository.getAll();
         }
-
-        public IEnumerable<Cliente> ObterTodos()
+        public DataTable filterByName(string nome)
         {
-            return _repository.ObterTodos();
-        }
-        public List<Cliente> getAll()
-        {
-            return _repository.ObterTodos().ToList<Cliente>();
+            return _repository.filterByName(nome);
         }
 
     }
